@@ -1,0 +1,27 @@
+#likess>a{
+    color:black !important;
+    text-decoration:none;
+}
+.likee>a{
+    color:black !important;
+    text-decoration:none;
+}
+.comment>a{
+    text-decoration:none;
+}
+.like>a{
+    text-decoration:none;
+}
+
+@media screen and (max-width: 780px) {
+    
+    .loccini{
+        margin-left:-50px !important;
+    }
+    .show{
+        margin-top:20px;
+    }
+    .post{
+        margin-left:340px !important;
+    }
+}

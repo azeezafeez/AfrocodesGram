@@ -10,21 +10,14 @@ use Illuminate\Support\Facades\DB;
 class SearchController extends Controller
 {
     public function getUser($user){
-        $Searched_User=User::where('name', 'like', "%{$user}%")->first();
+
+
+        $Searched_User=User::where('username', 'like', "%{$user}%")->orWhere('name', 'like', "%{$user}%")->with('profile')->get();
+
 
         if ($Searched_User=='') {
-            
+            return "";
         }
-        else{
-            $id= $Searched_User->id;
-
-        $data= DB::table('users')
-                    ->join('profiles','profiles.user_id','=','users.id')
-                    ->where('profiles.user_id','=',$id)
-                    ->get();
-        return $data;
-
-
-        }
+        return $Searched_User;
     }
 }

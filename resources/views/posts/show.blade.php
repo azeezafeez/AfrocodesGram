@@ -7,14 +7,14 @@
      </div>
     <div class="row">
         <div class="col-md-8">
-            <img src="/storage/{{$post->image}}" class="w-100">        
+            <img src="{{$post->getFirstMediaUrl()}}" width="500" class="show-image" >        
         </div>
 
         <div class="col-md-4">
-            <div>
+            <div class="com" style="max-height: 650px; overflow-y: auto">
                 <div  class="d-flex align-items-center show">
                     <div class="pr-3">
-                         <img src="/storage/{{$image}}" class="rounded-circle w-100" style="max-width:40px">
+                         <img src="{{$post->user->profile->image}}" class="rounded-circle w-100 " style="max-width:40px">
                     </div>
                     <div>
                   
@@ -49,16 +49,16 @@
                         @foreach ($comments as $comment)
                             <p>
                               <a href="/profile/{{$post->id}}" style="text-decoration:none">
-                                 <img src="/storage/{{$comment->image ? $comment->image : 'profile/jnUIV75gXXB0KpaQ9lauyFe4uT2pjHQri7rZeII1.png' }}" class="rounded-circle w-100" style="max-width:40px">
+                                 <img src="{{$comment->user->profile->image ? $comment->user->profile->image : 'images/faceless.png' }}" class="rounded-circle w-100" style="max-width:40px">
                               </a>
                             <span class="font-weight-bold "  id="username">
                                 <a href="/profile/{{$post->user->id}} " style="text-decoration:none"  class="ml-3">
-                                    <span class="text-dark">{{$comment->username}}</span>
+                                    <span class="text-dark">{{$comment->user->username}}</span>
                                 </a>
                             </span>
                                <span style="width:30px"> {{$comment->comment}}</span><br>
 
-                               <span class="text-muted "><div class="mt-2">{{$comment->time}}</div></span>
+                               <span class="text-muted "><div class="mt-2">{{$comment->created_at}}</div></span>
                             </p>
                                         
                         @endforeach
@@ -90,7 +90,7 @@
                                     <div class="comment">
                                         <a href="/p/show/{{$post->id}}" style="color:black"  ><i class="fa fa-comment ml-4">
                                         </i></a>
-                                        <span id="NoOfComments">{{$commentCount ? $commentCount: ''}}</span>
+                                        <span id="NoOfComments">{{$commentCount ? $commentCount: '0'}}</span>
                                     </div>
 
                       </div>

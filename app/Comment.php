@@ -4,13 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Carbon\Carbon;
+
 class Comment extends Model
 {
 
-    protected $dateFormat = 'Y-m-d  g: a';
+    // protected $dateFormat = 'Y-m-d  g: a';
 
 
-    public $timestamps=false;
+    // public $timestamps=false;
 
     protected $guarded=[];
 
@@ -21,4 +23,9 @@ class Comment extends Model
     public function post(){
         return $this->belongsTo(User::class);
     }
+
+     public function getCreatedAtAttribute($value){
+     	return Carbon::parse($value)->diffForHumans();
+           
+     }
 }

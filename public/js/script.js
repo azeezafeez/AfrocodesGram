@@ -59,35 +59,35 @@
                    var result = JSON.parse(JSON.stringify(data))
                     $('#result').empty();
                   
-                  
                     for(i in result){
                         if(result.length==''){
                              $("#result").append("");
+
                         }
                        
                             else{
 
+
+
                                
-                                 if (result[i]['image']=='') {
+                                 if (result[i]['profile']['image']=='') {
                                        
-                                         var image='profile/jnUIV75gXXB0KpaQ9lauyFe4uT2pjHQri7rZeII1.png'
+                                         var image='images/faceless.png'
                                  }
-                                 else if(result[i]['image']==null){
-                                        var image='profile/jnUIV75gXXB0KpaQ9lauyFe4uT2pjHQri7rZeII1.png'
+                                 else if(result[i]['profile']['image']==null){
+                                        var image='images/faceless.png'
                                  
                                  }
                                 else{
-                                      var image=result[i]['image']  
+                                      var image=result[i]['profile']['image']
                                 }
 
-                                
-                              
-                                
+                                console.log(image)
                                 $("#result").append(
                                     '<div  class="d-flex align-items-center">'+
                                     '<div class="pr-3">'+
                                     '<a href="/profile/' +result[i]['id']+ '" style="text-decoration:none">'+
-                                    '<img src="/storage/'+ image + '" class="rounded-circle w-100" style="max-width:40px"></a>'+
+                                    '<img src="'+ image + '" class="rounded-circle w-100" style="max-width:40px"></a>'+
 
 
                                     ' </div>'+
@@ -130,7 +130,7 @@ $("#textarea").keyup(function(event) {
                 type: 'GET', //THIS NEEDS TO BE GET
                 url: '/comment/'+postId+'/'+x,
                 success: function (data) {
-                    console.log(data)
+                    
                    if (data=='') {
                        console.log('null')
                    }
@@ -143,29 +143,30 @@ $("#textarea").keyup(function(event) {
                             $('#commentSpace').html('')
                             for(i in result){
                                 
-                            if (result[i]['image']=='') {
+                            if (result[i]['user']['profile']['image']=='') {
                                        
-                                 var image='profile/jnUIV75gXXB0KpaQ9lauyFe4uT2pjHQri7rZeII1.png'
+                                 var image='images/faceless.png';
                             }
-                            else if(result[i]['image']==null){
-                                 var image='profile/jnUIV75gXXB0KpaQ9lauyFe4uT2pjHQri7rZeII1.png'
+                            else if(result[i]['user']['profile']['image']==null){
+                                var image='images/faceless.png';    
                             }
                             
                             else{
-                                var image=result[i]['image']  
+                                var image=result[i]['user']['profile']['image'];  
                             }
-                                
-                            console.log("image is "+image)
+
+                            
+                            console.log(result)    
                             $('#commentSpace').append(
                                 '<p>'+
                                 '<a href="/profile/' +result[i]['id']+ '" style="text-decoration:none">'+
-                                    '<img src="/storage/'+image+ '" class="rounded-circle w-100" style="max-width:40px"></a>'+
+                                    '<img src="'+image+ '" class="rounded-circle w-100" style="max-width:40px"></a>'+
                                     '<span class="font-weight-bold ml-4" id="username">'+
-                                        '<a href="/profile/'+result[i]['user_id']+ '"style="text-decoration:none">'+
-                                            '<span class="text-dark">'+result[i]['username']+'  '+'</span>'+
+                                        '<a href="/profile/'+result[i]['user']['id']+ '"style="text-decoration:none">'+
+                                            '<span class="text-dark">'+result[i]['user']['username']+'  '+'</span>'+
                                         '</a>'+ ' '+
                                     '</span>'+result[i]['comment']+
-                                    '<br><span class="text-muted mt-3">'+result[i]['time']+'</span>'+
+                                    '<br><span class="text-muted mt-3">'+result[i]['created_at']+'</span>'+
                                     
                                         
                                 '</p>'

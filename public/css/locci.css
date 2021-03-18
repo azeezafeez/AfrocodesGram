@@ -1,3 +1,22 @@
+body{
+  background-color: whitesmoke;
+}
+.name-tag{
+  background-color: white !important;
+}
+.post-image{
+  padding-left: 70px;
+}
+
+.post{
+  margin-left: 270px !important;
+}
+.com{
+  background-color: white;
+  border:1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+}
 #likess>a{
     color:black !important;
     text-decoration:none;
@@ -24,4 +43,60 @@
     .post{
         margin-left:340px !important;
     }
+}
+
+@media screen and (max-width: 768px) {
+   .show-image{
+        max-width: 250px;
+        margin-left: 30px;
+   }
+  .post{
+    margin-left: 0px !important;
+  }
+
+  .follower-image{
+    max-width: 290px !important;
+  }
+
+  .following-image{
+    max-width: 290px !important;
+  }
+  .h1{
+    margin-left: 50px !important;
+  }
+  .username{
+    margin-left: 70px !important;
+  }
+  .para{
+    margin-left: 15px;  
+  }
+  .para1{
+    margin-left: 15px; 
+  }
+  .col2{
+    margin-top: 20px;
+  }
+  .main-row{
+    margin-left: 40px !important;
+  }
+  .follow-button{
+    margin-left: 10px !important;
+  }
+  .profile-name{
+    font-size: 25px;
+  }
+  .img-profile{
+    max-width: 250px !important;
+  }
+
+  .row-profile{
+    padding-left: 50px !important;
+  }
+  .com{
+    margin-top: 30px;
+  }
+  .like-image{
+    max-width: 200px !important;
+    margin-left: 50px;
+  }
 }

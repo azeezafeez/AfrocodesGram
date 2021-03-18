@@ -75,12 +75,16 @@ class LikeController extends Controller
 
 
     public function getLiker($postId){
-        $Likers=DB::table('users')
-        ->join('likes','users.id','=','likes.user_id')
-        ->join('profiles','profiles.user_id','=','users.id')
-        ->where('likes.post_id','=',$postId)
-        ->where('likes.status','=',1)
-        ->orderBy('likes.id','DESC')->paginate(5);
+        // $Likers=DB::table('users')
+        // ->join('likes','users.id','=','likes.user_id')
+        // ->join('profiles','profiles.user_id','=','users.id')
+        // ->where('likes.post_id','=',$postId)
+        // ->where('likes.status','=',1)
+        // ->orderBy('likes.id','DESC')->paginate(5);
+
+         $Likers= Like::where('post_id','=',$postId)->with('user.profile')->orderBy('likes.id','DESC')->paginate(5);
+         
+
 
         $likes = Like::where('post_id', $postId)
         ->where('status',1)

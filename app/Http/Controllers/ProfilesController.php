@@ -54,25 +54,32 @@ class ProfilesController extends Controller
             'title'=>'required',
             'description'=>'required',
             'url'=>'url',
-            'image'=>''
+           
         ]);
 
-        if (request('image')) {
 
-            $imagePath= request('image')->store('profile','public');
-            $image= Image::make(public_path("storage/{$imagePath}"))->fit(1000,1000);
-            $image->save();
-            
-            $imageArray=['image'=> $imagePath];
+        if (request('image')) {
+              
+              if (auth()->user()->profile->image!=null) {
+                  (auth()->user()->profile->getMedia())[0]->delete();
+                    
+              }
+
+              auth()->user()->profile->addMediaFromRequest('image')->toMediaCollection();
         }
+
         auth()->user()->profile->update(array_merge(
-            $data,
-            $imageArray ?? []
+            $data
               
         ));
         
         return redirect("/profile/{$user->id}");
        
     }
+
+    public function hey(){
+        return auth()->user()->profile->getFirstMediaUrl() ? auth()->user()->profile->getFirstMediaUrl(): "no media" ;    
+    }
 }
   
+

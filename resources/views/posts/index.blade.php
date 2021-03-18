@@ -12,14 +12,20 @@
 
            <div class="row">
                 <div class="col-md-6  offset-3">
-                   <a href="/p/show/{{$post->id}} "> <img src="/storage/{{$post->image}}" class="w-100"></a>        
-                </div>
-            </div>
-            
-            <div class="row pt-2 pb-4">
-                <div class="col-md-6 offset-3">
-                    <div>
-                            <p>
+                  
+                <div class="card">
+                      <div class="card-header name-tag">
+                          <a href="/profile/{{$post->user->id}} " style="text-decoration:none">
+                        <span class="text-dark font-weight-bold">{{$post->user->username}}</span></a>
+                      </div>
+                      <div class="card-body ">
+                         <a href="/p/show/{{$post->id}} "> <img src="{{$post->getFirstMediaUrl()}}" class="w-100" style="max-width: 370px"></a>   
+
+                
+                      </div>
+                      <hr>
+                      <div style="padding-left: 20px;">
+                      <p>
                                 <span class="font-weight-bold">
                                     <a href="/profile/{{$post->user->id}} " style="text-decoration:none">
                                         <span class="text-dark">{{$post->user->username}}</span>
@@ -50,7 +56,7 @@
                                     <div class="comment">
                                         <a href="/p/show/{{$post->id}}" style="color:black"  ><i class="fa fa-comment ml-4">
                                         </i></a>
-                                       <span id="NoOfComments">{{$post->getComments($post->id) ? $post->getComments($post->id) : ''}}</span>
+                                       <span id="NoOfComments">{{$post->getComments($post->id) ? $post->getComments($post->id) : '0'}}</span>
                                     </div>
 
                       </div>
@@ -61,6 +67,16 @@
                     
 
                             </p>
+                        </div>
+
+                </div>
+            </div>
+            </div>
+            
+            <div class="row pt-2 pb-4">
+                <div class="col-md-6 offset-3">
+                    <div>
+                          
                
                     </div>
                 </div>
@@ -75,25 +91,25 @@
 
     @else
         
-        <h1 class="font-weight-bold">Welcome</h1>
-        <div  class="font-weight-bold">{{Auth::user()->name}}</div>
-            <div class="row">
+        <h1 class="font-weight-bold h1">Welcome</h1>
+        <div  class="font-weight-bold username">{{Auth::user()->name}}</div>
+            <div class="row main-row">
                 <div class="col-md-6">
                     <div class="mt-5">
-                        <p>
+                        <p class="para">
                             <span class="font-weight-bold">
                                 <span class="text-dark">AfroCodeGram</span>
                             </span>
                             Welcomes you to a community of makers and friendly folks sharing and discovering latest in tech.
                         </p>
-                            Curious what's trending today? head over to your  <a href="/profile/{{Auth::user()->id}}" style="text-decoration:none">profile</a> and upload products,designs that are fascinating and also enter name into the search field to follow new friends and see thier posts.<br>
+                           <div class="para1">Curious what's trending today? head over to your  <a href="/profile/{{Auth::user()->id}}" style="text-decoration:none">profile</a> and upload products,designs that are fascinating and also enter name into the search field to follow new friends and see thier posts.<br>
                             Remember, everything you post is saved to your profile and can easily find it again. You can also explore topics, ask the<br>
                             community for reccomendations. once again welcome on board
-                         <div class="font-weight-bold">Kindly follow us <strong><a href="/profile/1" style="text-decoration:none">@AfroCodeGram</a></strong></div>
+                         <div class="font-weight-bold">Kindly follow us <strong><a href="/profile/1" style="text-decoration:none">@AfroCodeGram</a></strong></div></div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                <img src="/images/intro2.jpg" class="w-100">
+                <div class="col-md-6 col2">
+                <img src="/images/intro2.jpg" class="w-100" class="img2">
             </div>
         </div>
     @endif

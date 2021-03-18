@@ -13,7 +13,7 @@
     @foreach ($followers as $follower)
     <div class="row">
         <div class="col-md-6">
-             <a href="/profile/{{$follower->id}}"><img src="/storage/{{$follower->profile->profileImage()}}" height="400" ></a>
+             <a href="/profile/{{$follower->id}}"><img src="{{$follower->profile->getFirstMediaUrl()}}" style="max-width: 370px" class="follower-image" ></a>
                     
         </div>
 
@@ -21,7 +21,7 @@
             <div>
                 <div  class="d-flex align-items-center">
                     <div class="pr-3">
-                           <a href="/profile/{{$follower->id}}"><img src="/storage/{{$follower->profile->profileImage()}}" class="rounded-circle w-100" style="max-width:40px"></a>
+                           <a href="/profile/{{$follower->id}}"><img src="{{$follower->profile->getFirstMediaUrl()}}" class="rounded-circle w-100" style="max-width:40px"></a>
                      
                      </div>
                      <div>

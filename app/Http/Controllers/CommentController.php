@@ -17,25 +17,23 @@ class CommentController extends Controller
             # code...
         }
         else{
-            $date=date('Y-m-d H:i a');
-     
+            
             $data=[
                 'user_id'=>Auth::user()->id,
                 'post_id'=>$post['id'],
-                'time'=>$date,
                 'comment'=>$comment
             ];
     
             $comment= new Comment;
     
             $comment->create($data);
-    
-            $comments=DB::table('users')
-            ->join('comments','users.id','=','comments.user_id')
-            ->join('profiles','profiles.user_id','=','users.id')
-            ->where('comments.post_id','=',$post->id)
-            ->orderBy('comments.id','DESC')->get();
-    
+
+            $comments= Comment::where('post_id','=',$post->id)->with('user.profile')->orderBy('comments.id','DESC')->get();
+
+
+            
+            
+
             if ($comments==null) {
                 return null;
             }

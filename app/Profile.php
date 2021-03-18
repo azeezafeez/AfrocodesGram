@@ -3,9 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Auth;
 
-class Profile extends Model
+
+class Profile extends Model implements HasMedia
 {
+
+ use HasMediaTrait;
+ protected $appends = ['image'];
 protected $guarded=[];
 
 
@@ -15,12 +22,20 @@ public function followers(){
 
 public function profileImage(){
 
-    $imagePath=($this->image) ? $this->image: 'profile/jnUIV75gXXB0KpaQ9lauyFe4uT2pjHQri7rZeII1.png';
+    //$imagePath=($this->image) ? '/storage/'.$this->image: 'images/faceless.png';
+    $imagePath= $this->getFirstMediaUrl() ? $this->getFirstMediaUrl() : url("/").'/images/faceless.png';
+
     return $imagePath; 
 }
 
 public function user(){
     return $this->belongsTo(User::class);
 }
+
+public function getImageAttribute(){
+	 return $this->getFirstMediaUrl();
+	
+}
+
 }
  

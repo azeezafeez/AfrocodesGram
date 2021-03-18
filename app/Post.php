@@ -5,14 +5,18 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Support\Facades\DB;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+
 
 use App\Like;
 use App\User;
 use App\Comment;
 use Auth;
-class Post extends Model
+class Post extends Model implements HasMedia
 {
 
+ use HasMediaTrait;
 
     // do not guard any variable
     protected $guarded=[];
@@ -65,6 +69,12 @@ class Post extends Model
         $posts=Comment::where('post_id',$post)->get()->count();
         return $posts;
     }
+
+    public function getImageAttribute(){
+     return $this->getFirstMediaUrl();
+    
+}
+
 
 
 }

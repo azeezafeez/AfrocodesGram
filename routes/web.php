@@ -42,4 +42,5 @@ Route::get('/getComments/{post}', 'CommentController@getComments');
 Route::get('/likers/{post}', 'LikeController@getLiker');
 Route::get('/update/{user}', 'FollowsController@index');
 
+Route::get('/hey', 'ProfilesController@hey');
 

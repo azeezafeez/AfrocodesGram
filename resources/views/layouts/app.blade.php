@@ -72,7 +72,7 @@
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle font-weight-bold ml-4"  href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                     <img src="/storage/{{Auth::user()->profile->profileImage()}}" class="rounded-circle w-100" style="max-width:40px">
+                                     <img src="{{Auth::user()->profile->profileImage()}}" class="rounded-circle w-100" style="max-width:40px">
                                    <font color="purple"> {{Auth::user()->username}}</font><span class="caret"></span>
                                 </a>
 

@@ -105,7 +105,7 @@
                            <div class="para1">Curious what's trending today? head over to your  <a href="/profile/{{Auth::user()->id}}" style="text-decoration:none">profile</a> and upload products,designs that are fascinating and also enter name into the search field to follow new friends and see thier posts.<br>
                             Remember, everything you post is saved to your profile and can easily find it again. You can also explore topics, ask the<br>
                             community for reccomendations. once again welcome on board
-                         <div class="font-weight-bold">Kindly follow us <strong><a href="/profile/1" style="text-decoration:none">@AfroCodeGram</a></strong></div></div>
+                         <div class="font-weight-bold">Kindly follow us <strong><a href="/profile/4" style="text-decoration:none">@AfroCodeGram</a></strong></div></div>
                     </div>
                 </div>
                 <div class="col-md-6 col2">

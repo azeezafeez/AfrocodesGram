@@ -14,8 +14,9 @@
         "laravel/framework": "^6.2",
         "laravel/telescope": "^2.0",
         "laravel/tinker": "^2.0",
-        "spatie/laravel-medialibrary": "^7.0.02",
-        "league/flysystem-aws-s3-v3": "^1.0"
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "moontoast/math": "1.1.2 as 1.999.999",
+        "spatie/laravel-medialibrary": "^7.0.02"
     },
     "require-dev": {
         "facade/ignition": "^1.4",

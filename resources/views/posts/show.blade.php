@@ -49,7 +49,10 @@
                         @foreach ($comments as $comment)
                             <p>
                               <a href="/profile/{{$post->id}}" style="text-decoration:none">
-                                 <img src="{{$comment->user->profile->image ? $comment->user->profile->image : asset('images/faceless.png' }}" class="rounded-circle w-100" style="max-width:40px">
+                                @if($comment->user->profile->image)
+                                    <img src="{{$comment->user->profile->image}}" class="rounded-circle w-100" style="max-width:40px">
+                                @else
+                                     <img src="{{asset('images/faceless.png' }}" class="rounded-circle w-100" style="max-width:40px">
                               </a>
                             <span class="font-weight-bold "  id="username">
                                 <a href="/profile/{{$post->user->id}} " style="text-decoration:none"  class="ml-3">

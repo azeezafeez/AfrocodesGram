@@ -33,7 +33,8 @@ public function user(){
 }
 
 public function getImageAttribute(){
-	 return $this->getFirstMediaUrl();
+	 $image= $this->getFirstMediaUrl() ? $this->getFirstMediaUrl():  url("/").'/images/faceless.png';
+	 return $image;
 	
 }
 

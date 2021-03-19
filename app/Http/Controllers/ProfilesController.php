@@ -60,7 +60,7 @@ class ProfilesController extends Controller
 
         if (request('image')) {
               
-              if (auth()->user()->profile->image!=null) {
+              if (auth()->user()->profile->url!=null) {
                   (auth()->user()->profile->getMedia())[0]->delete();
                     
               }

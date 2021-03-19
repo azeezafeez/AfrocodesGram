@@ -87,7 +87,7 @@
                                     '<div  class="d-flex align-items-center">'+
                                     '<div class="pr-3">'+
                                     '<a href="/profile/' +result[i]['id']+ '" style="text-decoration:none">'+
-                                    '<img src="{{asset('+ image + ')}}" class="rounded-circle w-100" style="max-width:40px"></a>'+
+                                    '<img src="'+ image + '" class="rounded-circle w-100" style="max-width:40px"></a>'+
 
 
                                     ' </div>'+

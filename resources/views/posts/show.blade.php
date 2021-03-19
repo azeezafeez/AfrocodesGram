@@ -54,6 +54,7 @@
                                 @else
                                      <img src="{{asset('images/faceless.png') }}" class="rounded-circle w-100" style="max-width:40px">
                               </a>
+                              @endif
                             <span class="font-weight-bold "  id="username">
                                 <a href="/profile/{{$post->user->id}} " style="text-decoration:none"  class="ml-3">
                                     <span class="text-dark">{{$comment->user->username}}</span>

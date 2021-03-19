@@ -13,7 +13,9 @@
 
 Auth::routes();
 
-Route::post('follow/{user}','FollowsController@store')->name('follow.store');
+
+Route::group(['middleware'=>'auth'],function(){
+	Route::post('follow/{user}','FollowsController@store')->name('follow.store');
 
 Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
 Route::get('/profile/{username}', 'ProfilesController@user')->name('profile.show');
@@ -26,10 +28,6 @@ Route::post('/p/store', 'PostController@store')->name('post.store');
 Route::get('/p/show/{post}', 'PostController@show')->name('post.show');
 //patch is a method to update
 Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.update');
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
-
-
 Route::get('/following/{user}', 'FollowsController@following');
 
 Route::get('/follower/{user}', 'FollowsController@followers');
@@ -41,6 +39,13 @@ Route::get('/getlike/{post}', 'LikeController@getlike');
 Route::get('/getComments/{post}', 'CommentController@getComments');
 Route::get('/likers/{post}', 'LikeController@getLiker');
 Route::get('/update/{user}', 'FollowsController@index');
+
+});
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
+
 
 Route::get('/hey', 'ProfilesController@hey');
 
